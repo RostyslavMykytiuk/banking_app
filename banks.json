@@ -1,0 +1,28 @@
+{
+  "banks": [
+    {
+      "name": "Otp-bank",
+      "rate": "34",
+      "maxLoan": "40000",
+      "downPayment": "25",
+      "loanTerm": "22",
+      "id": 2
+    },
+    {
+      "name": "Monobank",
+      "rate": "45",
+      "maxLoan": "15000",
+      "downPayment": "10",
+      "loanTerm": "10",
+      "id": 3
+    },
+    {
+      "name": "Privat bank",
+      "rate": "23",
+      "maxLoan": "30000",
+      "downPayment": "15",
+      "loanTerm": "13",
+      "id": 4
+    }
+  ]
+}

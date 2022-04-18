@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="mortage">
+        <h1>Please fill the forms to take the mortage</h1>
+        <select [(ngModel)]="selectedValue"  name="" id="">
+            <option *ngFor="let bank of banks" [value]="bank.name">{{bank.name}}</option>
+        </select>
+        <form [formGroup]="loanForm" (ngSubmit)="monthlyPaymentCalc()">
+            <label for="loan_sum">Which sum do you want to take?</label>
+            <input [ngClass]="{'has-error': loanForm.get('loan_sum')?.invalid && loanForm.get('loan_sum')?.touched}"  type="text" name="loan_sum" id="" formControlName="loan_sum">
+            <p *ngIf="loanForm.get('loan_sum')?.invalid && loanForm.get('loan_sum')?.touched">Please enter the number value</p>
+            <label for="down_payment">Which sum can you pay as down payment?</label>
+            <input [ngClass]="{'has-error': loanForm.get('down_payment')?.invalid && loanForm.get('down_payment')?.touched}" type="text" name="down_payment" id="" formControlName="down_payment">
+            <p *ngIf="loanForm.get('down_payment')?.invalid && loanForm.get('down_payment')?.touched">Please enter the number value </p>
+            <br>
+            <button [disabled]="loanForm.invalid" type="submit">Take a mortage</button>
+        </form>
+        <div *ngIf="lever"  class="mortage_info">{{monthlyPayment}}</div>
+    </div>
+</div>

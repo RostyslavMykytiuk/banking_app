@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="form_container">
+        <form [formGroup]="form" (ngSubmit)="createBank()">
+            <!-- Name input block -->
+            <label for="bank_name">Name</label>
+            <input [ngClass]="{'has-error': form.get('name')?.invalid && form.get('name')?.touched}" type="text" name="bank_name" formControlName="name">
+            <p *ngIf="form.get('name')?.invalid && form.get('name')?.touched">This field cannot be empty</p>
+            <!-- Interest rate input block -->
+            <label for="rate">Interest rate</label>
+            <input [ngClass]="{'has-error': form.get('rate')?.invalid && form.get('rate')?.touched}" type="text" name="rate" formControlName="rate">
+            <p *ngIf="form.get('rate')?.invalid && form.get('rate')?.touched">Please enter the number from 1 to 100</p>
+            <!-- Maximum loan input block -->
+            <label for="max_loan">Maximum Loan</label>
+            <input [ngClass]="{'has-error': form.get('maxLoan')?.invalid && form.get('maxLoan')?.touched}" type="text" name="max_loan" formControlName="maxLoan">
+            <p *ngIf="form.get('maxLoan')?.invalid && form.get('maxLoan')?.touched">Maximum loan can only be  the number</p>
+            <!-- Minimum down payment input block -->
+            <label for="down_payment">Minimum down payment</label>
+            <input [ngClass]="{'has-error': form.get('downPayment')?.invalid && form.get('downPayment')?.touched}" type="down_payment" formControlName="downPayment">
+            <p *ngIf="form.get('downPayment')?.invalid && form.get('downPayment')?.touched">Down payment can only be the number from 1 to 100</p>
+            <!-- Loan term input block -->
+            <label for="loan_term">Loan term</label>
+            <input [ngClass]="{'has-error': form.get('loanTerm')?.invalid && form.get('loanTerm')?.touched}" type="text" name="loan_term" formControlName="loanTerm">
+            <p *ngIf="form.get('loanTerm')?.invalid && form.get('loanTerm')?.touched">Loan term can only be the number</p>
+            <br>
+            <button type="submit" [disabled]="form.invalid">Create new bank</button>
+        </form>
+    </div>
+    <div class="banks" *ngIf="banks.length > 0">
+        <div class="bank" *ngFor="let bank of banks">
+            <h3>{{bank.name}}</h3>
+            <div class="bank_detail">
+                Interest rate - {{bank.rate}}%
+            </div>
+            <div class="bank_detail">
+                Maximum loan - {{bank.maxLoan}}
+            </div>
+            <div class="bank_detail">
+                Minimum down payment - {{bank.downPayment}}%
+            </div>
+            <div class="bank_detail">
+                Loan term (months) - {{bank.loanTerm}}
+            </div>
+            <button (click)="changeLever(bank)">Change</button>
+            <button (click)="deleteBank(bank)">Delete</button>
+            <div class="change_bank" *ngIf="lever == bank.id">
+                <form [formGroup]="changeForm" (ngSubmit)="changeBank(bank); lever = 0">
+                    <!-- Name input block -->
+                    <label for="bank_name">Name</label>
+                    <input [ngClass]="{'has-error': changeForm.get('name')?.invalid && changeForm.get('name')?.touched}" type="text" name="bank_name" formControlName="name" placeholder="Enter new name">
+                    <p *ngIf="changeForm.get('name')?.invalid && changeForm.get('name')?.touched">This field cannot be empty</p>
+                    <!-- Interest rate input block -->
+                    <label for="rate">Interest rate</label>
+                    <input [ngClass]="{'has-error': changeForm.get('rate')?.invalid && changeForm.get('rate')?.touched}" type="text" name="rate" formControlName="rate" placeholder="Enter new interest rate">
+                    <p *ngIf="changeForm.get('rate')?.invalid && changeForm.get('rate')?.touched">Please enter the number from 1 to 100</p>
+                    <!-- Maximum loan input block -->
+                    <label for="max_loan">Maximum Loan</label>
+                    <input [ngClass]="{'has-error': changeForm.get('maxLoan')?.invalid && changeForm.get('maxLoan')?.touched}" type="text" name="max_loan" formControlName="maxLoan" placeholder="Enter new maximum loan">
+                    <p *ngIf="changeForm.get('maxLoan')?.invalid && changeForm.get('maxLoan')?.touched">Maximum loan can only be  the number</p>
+                    <!-- Minimum down payment input block -->
+                    <label for="down_payment">Minimum down payment</label>
+                    <input [ngClass]="{'has-error': changeForm.get('downPayment')?.invalid && changeForm.get('downPayment')?.touched}" type="down_payment" formControlName="downPayment" placeholder="Enter new minimum down payment">
+                    <p *ngIf="changeForm.get('downPayment')?.invalid && changeForm.get('downPayment')?.touched">Down payment can only be the number from 1 to 100</p>
+                    <!-- Loan term input block -->
+                    <label for="loan_term">Loan term</label>
+                    <input [ngClass]="{'has-error': changeForm.get('loanTerm')?.invalid && changeForm.get('loanTerm')?.touched}" type="text" name="loan_term" formControlName="loanTerm" placeholder="Enter new loan term ">
+                    <p *ngIf="changeForm.get('loanTerm')?.invalid && changeForm.get('loanTerm')?.touched">Loan term can only be the number</p>
+                    <br>
+                    <button type="submit" [disabled]="changeForm.invalid">Change  bank</button>
+                    
+                    <button (click)="lever = 0"> Cancel  </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+nav{
+    background-color: black;
+    color: white;
+    ul{
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        padding:20px 30px;
+        a{
+            text-decoration: none;
+            font-size: 1.5rem;
+            color: white;
+            font-weight: 700;
+            border-bottom:0px solid white;
+            &:hover{
+                border-bottom:1px solid white;
+                color:aliceblue;
+                transition: 1s;
+            }
+        }
+    }
+}

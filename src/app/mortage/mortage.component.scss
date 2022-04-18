@@ -1,0 +1,71 @@
+.container{
+    margin:30px 100px; 
+    text-align: center;
+    input{
+        padding:10px;
+        width:350px; 
+        margin-top:20px;
+        border:2px solid black;
+        border-radius: 5px;
+        &.has-error{
+            border:2px solid red;
+            color:red
+        }
+    }
+    p{
+        color:red;
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+    label{
+        display: block;
+        font-weight: 600;
+        font-size: 1.6rem;
+    }
+    button{
+        width:175px;
+        padding:20px;
+        border:2px solid black;
+        font-size: 1rem;
+        font-weight: 500;
+        color: black;
+        background-color: white;
+        cursor:pointer;
+        margin-top: 20px;
+
+        &:disabled{
+            cursor: not-allowed;
+        }
+        &:disabled:hover{
+            border:2px solid red;
+            color: red;
+            background-color: white;
+            transition: 1s;
+
+        }
+        &:hover{
+            color: white;
+            background-color: black;
+            transition: 1s;
+        }
+    }
+    p{
+        color:red;
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+    select{
+        width:250px;
+        padding:10px;
+        font-size: 1.5rem;
+        color:black;
+        border: 2px solid black;
+        border-radius: 10px;
+    }
+    .mortage_info{
+        margin-top: 20px;
+        font-size: 2rem;
+        color: black;
+        font-weight: 700;
+    }
+}
